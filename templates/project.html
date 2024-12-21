@@ -1,0 +1,53 @@
+<body>{% extends 'base.html' %}
+  {% block content %}
+
+  <div class="pmaincontainer">
+    <div class="ptitle">
+      <h1>My Projects</h1>
+    </div>
+  </div>
+
+  <div class="pcontainer">
+
+
+
+    <div class="pdetails"style="width: 94%;margin-left:1%">
+      {% for n in project%}
+
+      <label for="projects">
+        <p id="pprojects">
+        <h5>Projects :</h5>
+        <b>Project {{n.id}}: </b>{{n.project}}
+        </p>
+      </label><br>
+      <div class="col-12">
+
+        
+
+        <div class="col-6"  >
+          <img id="proimg" src="/media/{{n.img}}" alt="loding">
+
+        </div> 
+     
+        <div class="col-6" >
+          <br>
+        <b>Github link : </b>{{n.project_link}}<br><br>
+
+        <b>about : </b>{{n.about}}<br>
+        </div>
+      </div><br>
+
+      {%endfor%}
+
+
+      
+    </div>
+  </div>
+
+
+
+
+  {%endblock%}
+
+
+

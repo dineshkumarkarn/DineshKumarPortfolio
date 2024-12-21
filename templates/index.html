@@ -1,0 +1,274 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<style>
+  * {
+    box-sizing: border-box
+  }
+
+  body {
+    font-family: Verdana, sans-serif;
+    margin: 0
+  }
+
+  .mySlides {
+    display: none
+  }
+
+  img {
+    vertical-align: middle;
+  }
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 100%;
+    height: 300px;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active,
+  .dot:hover {
+    background-color: #717171;
+  }
+
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1s;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: .4
+    }
+
+    to {
+      opacity: 1
+    }
+  }
+
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 100%) {
+
+    .prev,
+    .next,
+    .text {
+      font-size: 11px
+    }
+  }
+
+  .img {
+    width: 100%;
+    height: 300px;
+  }
+
+  .mySlides {
+    width: 100%;
+  }
+</style>
+
+
+
+
+<div class="slideshow-container">
+  {%for n in project%}
+  <div class="mySlides">
+    <div class="numbertext">1 / 3</div>
+    <img class="img" src="/media/{{n.img}}" alt="loading">
+    <div class="text">{{n.project}}</div>
+  </div>
+  {%endfor%}
+
+
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+<div class="pdetails">
+  <label for="Name">
+    <p id="pname">
+    <h5></h5>
+    </p>
+  </label><br>
+  <label for="Name">
+    <p id="pname"><b>Name:</b><span> Dinesh Kumar</span> </p>
+  </label>
+  <label for="Name">
+    <p id="pname"><b></b> (Python developer)</p>
+  </label><br>
+  <label for="Name">
+    <p id="pname"><b>Email:</b> Dkrath41@gmai.com</p>
+  </label><br>
+
+</div>
+
+<div class="pcontainer"style="margin-bottom: 3%;">
+
+
+  <div class="pdetails"style="margin-bottom: 2%;" >
+
+
+
+    <label for="skills">
+      <p id="pskills">
+      <h5>skills :</h5>
+      </p>
+    </label><br>
+    <span><b>python : </b>better than intermediate<br></span>
+    <span><b>html & css : </b>better than intermediate<br></span>
+    <span><b>java sript: </b>begginer<br></span>
+    <span><b>SQL: </b>intermediate<br> </span>
+    <span><b>mysql: </b>intermediate<br></span>
+    <span><b>java: </b>begginer<br></span>  
+    <span><b>c & c++: </b>begginer<br></span>  
+    <span><b>Android Studio: </b>intermediate<br></span>   
+    <span><b>blender: </b>intermediate<br></span><br>
+    for more know about the skill click on click here button
+    <span ><a scr="loading" href="/skill">click here</a><br></span>
+
+  </div>
+
+  
+</div>
+
+
+<div class="pcontainer">
+  <div class="pdetails" style="width: 95%;margin-left:1%">
+    <h5>Projects :</h5>
+    {% for n in project%}
+
+    <label for="projects">
+      <p id="pprojects">
+        < <b>Project {{n.id}}: </b>{{n.project}}
+      </p>
+    </label><br>
+    <div class="col-12">
+
+      <img id="proimg" src="/media/{{n.img}}" alt="loding" style="height: 400px;">
+
+
+    </div><br>
+
+    {%endfor%}
+
+    know more about the project<a class="nav-link" href="/project/">click here</a>
+
+  </div>
+
+</div>
+
+
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+  }
+
+
+
+
+
+
+
+
+
+</script>
+
+{% endblock %}

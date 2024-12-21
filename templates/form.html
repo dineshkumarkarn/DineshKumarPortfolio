@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- <div class="col-12"> -->
+
+<div class="col-4"  >
+  <div class="pmaincontainerform" >
+    <div class="ptitle">
+        <h1>Contact and Enquiry</h1>
+    </div>
+</div>
+    <form method="post" >
+      {%csrf_token%}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter your name">
+            
+          </div>
+          <br>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="number">WhatsApp number</label>
+          <input type="text" class="form-control" name="number" id="number" placeholder="enter your whatsapp number">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="enquiry">write your quiry</label>
+          <textarea name="enquiry" id="exampleCheck1" placeholder="enter your quiry" class="form-control"></textarea>
+          
+        </div>
+        <br>
+        <button type="submit" class="btn-primary" id="sbm">Submit</button>
+        <p id1="sbm">{{n}}</p>
+      </form>
+      <br>
+</div>
+
+<!-- </div> -->
+
+{%endblock%}
