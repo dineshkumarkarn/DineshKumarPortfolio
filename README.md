@@ -1,2 +1,5 @@
-# DineshKumarPortfolio
-this is the portfolio website of mine
+{% extends "base.html" %}
+
+{% block content %}
+
+{%endblock%}
